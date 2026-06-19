@@ -1,0 +1,21 @@
+{
+  "name": "template-node-web-service",
+  "version": "0.1.0",
+  "description": "Onklave project template: a minimal containerised Node.js HTTP service.",
+  "type": "module",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test",
+    "lint": "node --check src/server.js && node --check src/app.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
