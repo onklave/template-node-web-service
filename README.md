@@ -9,8 +9,11 @@ health check, a test, and a production Dockerfile — nothing more.
 - A small [Express](https://expressjs.com/) app exposing two routes:
   - `GET /` — a greeting JSON.
   - `GET /healthz` — the health-check contract (see below).
-- ESM (`"type": "module"`), Node 22+.
+- ESM (`"type": "module"`), Node 22+ locally; the container runs Node 24 (Active LTS).
 - Built and served by Onklave from the included `Dockerfile`.
+
+Unknown routes return a JSON `404`, and unhandled errors return a JSON `500` with
+the detail logged server-side rather than returned to the caller.
 
 ## Run locally
 
@@ -44,7 +47,11 @@ Uses the built-in `node:test` runner — no extra test dependencies.
 
 ## Deployment
 
-Onklave builds this service from the `Dockerfile` and serves it on **port 3000**.
+`onklave.yaml` at the repo root is the deployment contract: it tells Onklave which
+Dockerfile to build, the port to serve (`3000`), the health path to probe
+(`/healthz`) and the route to expose. GitHub Actions is not used — add a second
+service as another entry under `services` in that file.
+
 The container runs as a non-root user. No changes to the build or run commands are
 needed — keep the service listening on the port Onklave provides via `PORT` (default
 `3000`) and keep `/healthz` answering `200`.
