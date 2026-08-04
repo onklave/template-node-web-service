@@ -1,0 +1,15 @@
+# Onklave reads this file to build, run and expose this repo.
+# It is the only deployment contract: GitHub Actions is not used or consulted.
+# To add a second service, add another entry under `services`.
+version: 1
+services:
+  - name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    runtime:
+      port: 3000
+      healthPath: /healthz
+    expose:
+      enabled: true
+      path: /

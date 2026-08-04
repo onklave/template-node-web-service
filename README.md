@@ -44,7 +44,11 @@ Uses the built-in `node:test` runner — no extra test dependencies.
 
 ## Deployment
 
-Onklave builds this service from the `Dockerfile` and serves it on **port 3000**.
+`onklave.yaml` at the repo root is the deployment contract: it tells Onklave which
+Dockerfile to build, the port to serve (`3000`), the health path to probe
+(`/healthz`) and the route to expose. GitHub Actions is not used — add a second
+service as another entry under `services` in that file.
+
 The container runs as a non-root user. No changes to the build or run commands are
 needed — keep the service listening on the port Onklave provides via `PORT` (default
 `3000`) and keep `/healthz` answering `200`.
