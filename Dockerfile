@@ -1,13 +1,14 @@
 # syntax=docker/dockerfile:1
 
+# Node 24 ("Krypton") is the Active LTS line, supported until 2028-04-30.
 # --- Build stage: install production dependencies ---
-FROM node:22-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
 
 # --- Runtime stage ---
-FROM node:22-alpine AS runtime
+FROM node:24-alpine AS runtime
 ENV NODE_ENV=production
 WORKDIR /app
 

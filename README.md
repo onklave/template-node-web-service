@@ -9,8 +9,11 @@ health check, a test, and a production Dockerfile — nothing more.
 - A small [Express](https://expressjs.com/) app exposing two routes:
   - `GET /` — a greeting JSON.
   - `GET /healthz` — the health-check contract (see below).
-- ESM (`"type": "module"`), Node 22+.
+- ESM (`"type": "module"`), Node 22+ locally; the container runs Node 24 (Active LTS).
 - Built and served by Onklave from the included `Dockerfile`.
+
+Unknown routes return a JSON `404`, and unhandled errors return a JSON `500` with
+the detail logged server-side rather than returned to the caller.
 
 ## Run locally
 
