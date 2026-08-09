@@ -5,6 +5,8 @@
 FROM node:24-alpine AS build
 WORKDIR /app
 COPY package*.json ./
+# Vendored Onklave SDKs are file: deps, so they must exist before npm ci.
+COPY vendor ./vendor
 RUN npm ci --omit=dev
 
 # --- Runtime stage ---

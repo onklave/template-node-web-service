@@ -11,7 +11,7 @@ npm-debug.log*
 !.env.example
 
 # Build / coverage output
-dist/
+/dist/
 coverage/
 
 # OS / editor cruft

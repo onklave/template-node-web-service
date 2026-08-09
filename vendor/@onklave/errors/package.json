@@ -1,0 +1,53 @@
+{
+  "name": "@onklave/errors",
+  "version": "0.1.0",
+  "description": "Onklave error-tracking SDK — thin client that posts errors to the Onklave errors service ingest endpoint, authenticated with a per-project ingest key.",
+  "keywords": [
+    "onklave",
+    "errors",
+    "error-tracking",
+    "monitoring",
+    "sdk"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onklave/onklave-platform.git",
+    "directory": "_libs/@onklave/errors"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./browser": {
+      "types": "./src/browser.d.ts",
+      "default": "./src/browser.js"
+    },
+    "./nestjs": {
+      "types": "./src/nestjs.d.ts",
+      "default": "./src/nestjs.js"
+    }
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "11.1.17"
+  },
+  "peerDependenciesMeta": {
+    "@nestjs/common": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}

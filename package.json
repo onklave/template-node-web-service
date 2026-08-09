@@ -16,6 +16,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@onklave/app-runtime": "file:vendor/@onklave/app-runtime",
     "express": "^5.2.1"
   }
 }

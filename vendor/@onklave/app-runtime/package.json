@@ -1,0 +1,30 @@
+{
+  "name": "@onklave/app-runtime",
+  "version": "0.1.0",
+  "description": "Curated runtime SDK for apps built on Onklave (zero-trust per-env secret loading, and more). Dependency-free; Node 18+.",
+  "keywords": [
+    "onklave",
+    "app-runtime",
+    "secrets",
+    "sdk"
+  ],
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/onklave/onklave-platform.git",
+    "directory": "_libs/@onklave/app-runtime"
+  },
+  "type": "commonjs",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
