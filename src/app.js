@@ -1,4 +1,5 @@
 import express from 'express';
+import { OnklaveErrors } from '@onklave/errors';
 
 const APP_NAME = process.env.APP_NAME || 'template-node-web-service';
 
@@ -26,9 +27,13 @@ export function createApp() {
   });
 
   // Errors are logged server-side only: the response carries no stack trace
-  // or error message, which would otherwise leak internals to callers.
-  app.use((err, _req, res, _next) => {
+  // or error message, which would otherwise leak internals to callers. The
+  // capture reports to Onklave error tracking (a no-op when not initialised).
+  app.use((err, req, res, _next) => {
     console.error(err);
+    OnklaveErrors.captureException(err, {
+      request: { method: req.method, path: req.path, statusCode: 500 },
+    });
     res.status(500).json({ error: 'Internal Server Error' });
   });
 

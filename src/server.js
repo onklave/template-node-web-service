@@ -1,4 +1,10 @@
-import { createApp } from './app.js';
+import { initOnklave } from './onklave.js';
+
+// Platform wiring first: per-environment secrets land in process.env and
+// error tracking starts. A no-op off-platform (local dev, CI).
+await initOnklave(process.env.APP_NAME || 'template-node-web-service');
+
+const { createApp } = await import('./app.js');
 
 const port = process.env.PORT || 3000;
 const app = createApp();

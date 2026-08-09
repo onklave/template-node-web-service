@@ -8,7 +8,7 @@
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
     "test": "node --test",
-    "lint": "node --check src/server.js && node --check src/app.js"
+    "lint": "node --check src/server.js && node --check src/app.js && node --check src/onklave.js"
   },
   "engines": {
     "node": ">=22"
@@ -16,6 +16,8 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@onklave/app-runtime": "^0.1.0",
+    "@onklave/errors": "^0.1.0",
     "express": "^5.2.1"
   }
 }
